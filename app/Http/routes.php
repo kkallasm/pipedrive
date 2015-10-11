@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('data', [
+    'as' => 'data', 'uses' => 'OrganizationController@generateData'
+]);
+
+Route::post('relations', [
+    'as' => 'post.org.relations', 'uses' => 'RelationController@create'
+]);
+
+Route::get('relations', [
+    'as' => 'get.org.relations', 'uses' => 'RelationController@show'
+]);
+
+Route::delete('relations', [
+    'as' => 'delete.org.relations', 'uses' => 'RelationController@delete'
+]);
