@@ -19,7 +19,7 @@ class CreateDataController extends Controller
  
     	$data = json_encode($data);
 
-    	$url = 'http://pipedrive.app:8000/relations';
+    	$url = env('BASE_URL').'/relations';
 	    $ch = curl_init($url);
 	    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 	    curl_setopt($ch, CURLOPT_PORT, 80);
