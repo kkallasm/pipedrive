@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('data', [
-    'as' => 'data', 'uses' => 'OrganizationController@generateData'
+Route::get('generateData', [
+    'as' => 'data', 'uses' => 'CreateDataController@createRelations'
 ]);
 
 Route::post('relations', [

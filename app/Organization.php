@@ -22,9 +22,4 @@ class Organization extends Model
      */
     protected $fillable = ['id', 'name'];
 
-
-    public function getRelatedParentOrganizations()
-    {
-    	return Relation::where('org_id',$this->id)->get();
-    }
 }

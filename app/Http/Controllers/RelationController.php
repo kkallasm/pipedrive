@@ -23,6 +23,12 @@ class RelationController extends Controller
 
 	protected function createRelations($res, $parent_org_id, &$response)
 	{
+		if($parent_org_id == null && !isset($res['org_name']) && !$res['org_name'])
+	    {
+	    	$response[] = array('success' => false, 'error' => "Invalid request ".$res);
+			return;
+	    }
+
 		if(isset($res['org_name']) && $res['org_name'])
 		{
 			//check for duplicates
@@ -83,17 +89,14 @@ class RelationController extends Controller
 	 */
 	public function create(Request $request)
 	{
-		if($request->isJson())
-		{
-			$res = $request->all();
-			$response = array();
-			$this->createRelations($res, null, $response);
-			return $response;				
-		}
-		else
-		{
-			return response()->json(['success' => false, 'error' => 'Expected JSON request']);	
-		}
+		$res = $request->all();
+
+		if(!$res)
+			return array('success' => false, 'error' => 'No request parameters');
+
+		$response = array();
+		$this->createRelations($res, null, $response);
+		return $response;				
 	}
 
     /**
@@ -112,16 +115,13 @@ class RelationController extends Controller
 	 */
 	public function show(Request $request)
 	{
-		if($request->isJson())
+		$res = $request->all();
+		if(isset($res['org_id']) && intval($res['org_id']))
 		{
-			$res = $request->all();
-			if(isset($res['org_id']) && intval($res['org_id']))
-			{
-				$relations = Relation::getRelationsByOrgId($res['org_id']);
-				return response()->json($relations);
-			}
-			else return response()->json(['success' => false, 'error' => 'Invalid org_id parameter']);
+			$relations = Relation::getRelationsByOrgId($res['org_id']);
+			return response()->json($relations);
 		}
-		else return response()->json(['success' => false, 'error' => 'Expected JSON request']);
+		else return response()->json(['success' => false, 'error' => 'Invalid org_id parameter']);
+		
 	}
 }

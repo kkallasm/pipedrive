@@ -26,8 +26,7 @@ class Relation extends Model
     {    
         $target_org = Organization::find($org_id);
         if($target_org == null)
-            return array('success' => false, 'error' => 'organization not found by ID'. $org_id);
-
+            return array('success' => false, 'error' => 'organization not found by ID '.$org_id);
 
         $result['success'] = true;
         $data = array();
