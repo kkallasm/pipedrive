@@ -1,3 +1,12 @@
+Technology used:
+
+* Laravel 5 framework
+* Vagrant running ubuntu and nginx (homestead)
+* Sequel Pro for phpmyadmin
+
+run tests with 'vendor/bin/phpunit' command
+
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
