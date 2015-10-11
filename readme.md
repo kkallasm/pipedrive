@@ -4,7 +4,7 @@ Technology used:
 * Vagrant running ubuntu and nginx (homestead)
 * Sequel Pro for phpmyadmin
 
-run tests with 'vendor/bin/phpunit' command
+run tests with 'vendor/bin/phpunit' command 
 
 
 ## Laravel PHP Framework
