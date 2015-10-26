@@ -3,7 +3,7 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server ipv6only=on;
 
-    root /var/www/pipedrive;
+    root /var/www/pipedrive/public;
     index index.php index.html index.htm;
     charset utf-8;
 
